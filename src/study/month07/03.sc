@@ -1,7 +1,30 @@
+import java.io.{FileOutputStream, FileInputStream}
+
+import scala.io.StdIn
+
 /**
  * 최대 갯수 구하기
  */
-object TypewriterMonkey {
+object TypewriterMonkey extends App {
+  Console.setIn(new FileInputStream("B-small-practice.in"))
+  Console.setOut(new FileOutputStream("B-large-practice (1).out"))
+
+  val cases = StdIn.readLine().toInt
+  println("====================================================")
+  println(cases)
+  println("====================================================")
+  (1 to cases) foreach { n =>
+    val Array(k, l, s) = StdIn.readLine().split(" ").map(_.toInt)
+    val keyboard = StdIn.readLine()
+    val expected = StdIn.readLine()
+
+    println(s"Case #$n:")
+  }
+
+  def init(time: Int, keyBorad: String, target: String, input: Int) = {
+
+  }
+
   def isValid(keyBorad: String, target: String) = {
     var result = true
     target.foreach(char => if (keyBorad.count(_ == char) == 0) result = false)
