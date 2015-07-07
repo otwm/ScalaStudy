@@ -1,4 +1,5 @@
 import java.io.{FileOutputStream, FileInputStream}
+import java.util.function.LongUnaryOperator
 
 import scala.io.StdIn
 
@@ -6,23 +7,16 @@ import scala.io.StdIn
  * 최대 갯수 구하기
  */
 object TypewriterMonkey extends App {
-  Console.setIn(new FileInputStream("B-small-practice.in"))
-  Console.setOut(new FileOutputStream("B-large-practice (1).out"))
+  Console.setIn(new FileInputStream("D:\\dev\\project\\ScalaStudy\\src\\study\\month07\\B-small-practice.in"))
+  Console.setOut(new FileOutputStream("D:\\dev\\project\\ScalaStudy\\bin\\result\\study\\month07\\B-small-practice.out"))
 
   val cases = StdIn.readLine().toInt
-  println("====================================================")
-  println(cases)
-  println("====================================================")
   (1 to cases) foreach { n =>
     val Array(k, l, s) = StdIn.readLine().split(" ").map(_.toInt)
     val keyboard = StdIn.readLine()
-    val expected = StdIn.readLine()
+    val target = StdIn.readLine()
 
-    println(s"Case #$n:")
-  }
-
-  def init(time: Int, keyBorad: String, target: String, input: Int) = {
-
+    println(s"Case #$n: ${average(keyboard, target, s)}")
   }
 
   def isValid(keyBorad: String, target: String) = {
@@ -78,55 +72,32 @@ object TypewriterMonkey extends App {
   }
 }
 
+//5 2 4
+//YLSRO
+//VN
 
-//TypewriterMonkey.max("google", "go", 2)
-//TypewriterMonkey.average("google", "go", 2)
-//TypewriterMonkey.max("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ROSENCRANTZ", 100)
+//TypewriterMonkey.average("YLSRO", "YN", 4)
+//TypewriterMonkey.main(Array("Test"))
 
-//BANANAS
-//MONKEY
-//6
+//2 2 7
+//KQ
+//QK
 
-TypewriterMonkey.average("BANANAS", "MONKEY", 6)
-//TypewriterMonkey.average("BANANAS", "MONKEY", 6)
-
-TypewriterMonkey.average("AA", "AAA", 4)
-
-TypewriterMonkey.average("AB", "B", 2)
-
-TypewriterMonkey.average("GOOGLE", "GO", 2)
-
-TypewriterMonkey.average("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ROSENCRANTZ", 100)
 /*
-2 3 4
-AA
-AAA
-2 1 2
-AB
-B
-6 2 2
-GOOGLE
-GO
-26 11 100
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-ROSENCRANTZ
+KK
+KQ
+QQ
+QK   1
 
-
-AB
-
-B
-
-AA  0
-AB  1
-BB  2
-BA  1
-
-4/4 = 1
-
-2 - (1/2) * 2
-
+7 2 3
+LLLUNLL
+LL
 
 */
-//2 - 2 / 2
 
-//println(2 - ((1.0 / 2.0) * 2.0))
+1/2 * 1/2 * 3
+3 - 0.5 * 0.5 * 3
+TypewriterMonkey.max("KQ", "QK", 7)
+TypewriterMonkey.average("KQ", "QK", 7)
+
+

@@ -1,34 +1,47 @@
-package study.month07
-
 import java.io.{FileOutputStream, FileInputStream}
 
 import scala.io.StdIn
 
-class TypewriterMonkey {
-
-}
-
 /**
- * Created by kdo on 2015-07-06.
+ * 최대 갯수 구하기
  */
 object TypewriterMonkey extends App {
   Console.setIn(new FileInputStream("D:\\dev\\project\\ScalaStudy\\src\\study\\month07\\B-small-practice.in"))
   Console.setOut(new FileOutputStream("D:\\dev\\project\\ScalaStudy\\bin\\result\\study\\month07\\B-small-practice.out"))
 
+  def solve(s: Int, keyboard: String, expected: String): Double = {
+    def repeatRangeNum(): Int = {
+      expected.length - (1 until expected.length).find(
+        x => expected.substring(x) == expected.substring(0, expected.length - x)
+      ).getOrElse(expected.length)
+    }
+
+    def manBanana: Int =
+      if (percent == 0) 0 else (s - repeatRangeNum) / (expected.length - repeatRangeNum)
+
+    def percent: Double =
+      (1.0 /: expected)((acc, x) => acc * (keyboard.count(x == _).toDouble / keyboard.length))
+
+    manBanana - (percent * (s - expected.length + 1))
+  }
   val cases = StdIn.readLine().toInt
-  println(cases)
+  (1 to cases) foreach { n =>
+    val Array(k, l, s) = StdIn.readLine().split(" ").map(_.toInt)
+    val keyboard = StdIn.readLine()
+    val target = StdIn.readLine()
+
+    println(s"Case #$n: ${average(keyboard, target, s)}")
+  }
+  /*
+  val cases = StdIn.readLine().toInt
   (1 to cases) foreach { n =>
     val Array(k, l, s) = StdIn.readLine().split(" ").map(_.toInt)
     val keyboard = StdIn.readLine()
     val expected = StdIn.readLine()
 
-    println(s"Case #$n:")
+    println(s"Case #$n: ${solve(s, keyboard, expected)}")
   }
-
-  def init(time: Int, keyBorad: String, target: String, input: Int) = {
-
-  }
-
+*/
   def isValid(keyBorad: String, target: String) = {
     var result = true
     target.foreach(char => if (keyBorad.count(_ == char) == 0) result = false)
@@ -80,7 +93,11 @@ object TypewriterMonkey extends App {
     }
     _max - value * _max
   }
-
 }
 
-TypewriterMonkey.main()
+//5 2 4
+//YLSRO
+//VN
+
+//TypewriterMonkey.average("YLSRO", "YN", 4)
+TypewriterMonkey.main(Array("Test"))
