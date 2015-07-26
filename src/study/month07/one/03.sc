@@ -96,7 +96,7 @@ LL
 */
 
 1/2 * 1/2 * 3
-3 - 0.5 * 0.5 * 3
+3 - (0.5 * 0.5 * 7) * (7 - 2 + 1)
 TypewriterMonkey.max("KQ", "QK", 7)
 TypewriterMonkey.average("KQ", "QK", 7)
 
